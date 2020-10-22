@@ -187,11 +187,11 @@ int main()
         
         //4.light position
         GLint lightPosUniformLocation = glGetUniformLocation(lightingShader.Program, "lightPos");
-        glUniform3f(lightPosUniformLocation, 0.0f,0.0f,-2.0f);
+        glUniform3f(lightPosUniformLocation, lightPos.x, lightPos.y, lightPos.z);
         
         //5.view position
         GLint viewPosUniformLocation = glGetUniformLocation(lightingShader.Program, "viewPos");
-        glUniform3f(viewPosUniformLocation, 0.2f,0.2f,-1.0f);
+        glUniform3f(viewPosUniformLocation, camera.Position.x,camera.Position.y,camera.Position.z);
         
         //6.Color of light
         GLint lightColorUniformLocation = glGetUniformLocation(lightingShader.Program, "lightColor");

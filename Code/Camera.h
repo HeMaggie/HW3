@@ -65,12 +65,11 @@ public:
     // TODO1: Returns the view matrix calculated using Eular Angles and the LookAt Matrix
     glm::mat4 GetViewMatrix()
     {
-        
-        glm::mat4 view = glm::lookAt
-        (glm::vec3(2.0, 0.0, -5.0),
-         glm::vec3(0.0, 0.0, 0.0),
-         glm::vec3(0.0, 1.0, 0.0));//eye,center,up
-        return  view;
+        float radius = 5.0f;
+        float X = sin(glfwGetTime()) * radius;         //Change the x coordinate as time goes
+        float Z = cos(glfwGetTime()) * radius;  //Change the z coordinate as time goes
+        glm::mat4 view = glm::lookAt(glm::vec3(X, 0.0, Z), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));   //eye, center, up
+        return view;
     }
 
     // Processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)

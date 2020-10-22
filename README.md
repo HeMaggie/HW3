@@ -10,7 +10,7 @@ MacOS 10.15
 Xcode
 
 ### 3. Details:
--Vertex Shader: <br>
+1. Vertex Shader: <br>
 (1)Input <br>
 Get coordinate_of_vertex form location 0. <br>
 Get attribute_pointer of vertex from location 1. <br>
@@ -19,48 +19,48 @@ Get model matrix, view matrix, and projection matrix through uniform. <br>
 (2)It defines the "gl_Position", which is the position of the current vertex.<br> 
 gl_Position = projection * view * model * coordinate_of_vertex.<br>
 
-(3)Output
+(3)Output<br>
 "Normal direction" of the vertex & "fragment position".<br>
 Normal = inverse(transpose(mat3(model))) * aNormal, where aNormal is the vertex attribute pointers defined in the vertices array.<br>
 Fragment Position(FragPos) = model matrix * coordinate_of_vertex.<br>
 
--Fragment Shader:
-(1)Input
-"Normal" & "Fragment Position(FragPos)" from vertex shader,
-"light Position"(lightPos), "View Position"(viewPos), "light color"(lightColor), & "object color"(objectColor) through uniform.
+2. Fragment Shader:<br>
+(1)Input<br>
+"Normal" & "Fragment Position(FragPos)" from vertex shader,<br>
+"light Position"(lightPos), "View Position"(viewPos), "light color"(lightColor), & "object color"(objectColor) through uniform.<br>
 
-(2)Phong Model
-a. Ambient Light: 
-ambient = ambientStrength * lightColor, where ambientStrength I set to 0,2.
-b. Diffuse Reflection: 
-Color of diffused light is the component that the light has on the normal vector direction. 
---> diffuse = max(dot(lightDir,norm), 0.0) * lightColor, 
-where lightDir(light direction) is normalize(lightPos - FragPos),
-and norm is normalize(Normal);
-c. Specular Highlight:
-Specular highlight is to do with the view direction and the direction of the reflected light. It is the component that the reflected light has on the view direction. 
---> specular = specularStrength * pow(max(dot(viewDir, reflectDir),0.0),128) * lightColor, where
-specularStrength = 0.3,
-viewDir = normalize(viewPos - FragPos),
-reflectDir = reflect(-lightDir, norm),
-power is added to improve the effect that the change of vectorial angle b/t viewDir and reflectDir has on the change of specular light strength.
+(2)Phong Model<br>
+a. Ambient Light: <br>
+ambient = ambientStrength * lightColor, where ambientStrength I set to 0,2.<br>
+b. Diffuse Reflection: <br>
+Color of diffused light is the component that the light has on the normal vector direction. <br>
+--> diffuse = max(dot(lightDir,norm), 0.0) * lightColor, <br>
+where lightDir(light direction) is normalize(lightPos - FragPos),<br>
+and norm is normalize(Normal);<br>
+c. Specular Highlight:<br>
+Specular highlight is to do with the view direction and the direction of the reflected light. It is the component that the reflected light has on the view direction. <br>
+--> specular = specularStrength * pow(max(dot(viewDir, reflectDir),0.0),128) * lightColor, where<br>
+specularStrength = 0.3,<br>
+viewDir = normalize(viewPos - FragPos),<br>
+reflectDir = reflect(-lightDir, norm),<br>
+power is added to improve the effect that the change of vectorial angle b/t viewDir and reflectDir has on the change of specular light strength.<br>
 
-(3)Output
-FragColor = (ambient + diffuse + specular) * objectColor.
+(3)Output<br>
+FragColor = (ambient + diffuse + specular) * objectColor.<br>
 
--Main.cpp
-Passing the parameters the shader files needed through uniform.
-(1)model: set as identity matrix
-        glm::mat4 M1 = glm::mat4
-        (glm::vec4(1.0,0.0,0.0,0.0),
-         glm::vec4(0.0,1.0,0.0,0.0),
-         glm::vec4(0.0,0.0,1.0,0.0),
-         glm::vec4(0.0,0.0,0.0,1.0));
+3. Main.cpp<br>
+Passing the parameters the shader files needed through uniform. Do this in the while loop ahead of lightingShader.Use();<br>
+(1)model: set as identity matrix<br>
+        glm::mat4 M1 = glm::mat4<br>
+        (glm::vec4(1.0,0.0,0.0,0.0),<br>
+         glm::vec4(0.0,1.0,0.0,0.0),<br>
+         glm::vec4(0.0,0.0,1.0,0.0),<br>
+         glm::vec4(0.0,0.0,0.0,1.0));<br>
 
-(2)view: call camera.GetViewMatrix();
+(2)view: call camera.GetViewMatrix();<br>
 
-(3)projection matrix: using glm::perspective(fovy,aspect,near,far)
-glm::perspective(100.0f, 1.5f, 3.0f, 150.0f);
+(3)projection matrix: using glm::perspective(fovy,aspect,near,far)<br>
+glm::perspective(100.0f, 1.5f, 3.0f, 150.0f);<br>
  
 (4)light position = (0.0f,0.0f,-2.0f);
         
@@ -70,9 +70,9 @@ glm::perspective(100.0f, 1.5f, 3.0f, 150.0f);
         
 (7)Color of the cube = (0.6f,0.9f,0.8f);
 
-Camera:
-GetViewMatrix returns:
-glm::lookAt
-        (glm::vec3(2.0, 0.0, -5.0),
-         glm::vec3(0.0, 0.0, 0.0),
-         glm::vec3(0.0, 1.0, 0.0));
+4. Camera:<br>
+GetViewMatrix returns:<br>
+glm::lookAt<br>
+        (glm::vec3(2.0, 0.0, -5.0),<br>
+         glm::vec3(0.0, 0.0, 0.0),<br>
+         glm::vec3(0.0, 1.0, 0.0));<br>

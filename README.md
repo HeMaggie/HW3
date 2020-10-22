@@ -10,7 +10,8 @@ MacOS 10.15
 Xcode
 
 ### 3. Details:
-1. Vertex Shader: <br>
+##### 1. Vertex Shader: <br>
+
 (1) Input <br>
 Get coordinate_of_vertex form location 0. <br>
 Get attribute_pointer of vertex from location 1. <br>

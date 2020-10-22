@@ -85,4 +85,4 @@ glm::lookAt<br>
          glm::vec3(0.0, 1.0, 0.0));<br>
          
          
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Image of Ambient](https://github.com/HeMaggie/HW3/tree/main/image/1.Ambient.png)

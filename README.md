@@ -68,9 +68,9 @@ Passing the parameters the shader files needed through uniform. Do this in the w
 (3) projection matrix: using glm::perspective(fovy,aspect,near,far)<br>
 glm::perspective(100.0f, 1.5f, 3.0f, 150.0f);<br>
  
-(4) light position = (0.0f,0.0f,-2.0f);
+(4) light position = (lightPos.x, lightPos.y, lightPos.z)= (1.2f, 1.0f, 2.0f);
         
-(5) view position= (0.2f,0.2f,-1.0f);
+(5) view position= (camera.Position.x,camera.Position.y,camera.Position.z) = (0.0f, 0.0f, 3.0f);
 
 (6) Color of light = (1.0f,1.0f,1.0f);
         
@@ -79,12 +79,13 @@ glm::perspective(100.0f, 1.5f, 3.0f, 150.0f);<br>
 ---------------------
 4. Camera:<br>
 GetViewMatrix returns:<br>
-glm::lookAt<br>
-        (glm::vec3(2.0, 0.0, -5.0),<br>
-         glm::vec3(0.0, 0.0, 0.0),<br>
-         glm::vec3(0.0, 1.0, 0.0));<br>
-         
-### IMAGES
+glm::mat4 view = glm::lookAt<br>
+(glm::vec3(x, 0.0, z), <br>
+glm::vec3(0.0, 0.0, 0.0), <br>
+glm::vec3(0.0, 1.0, 0.0));  <br> 
+where x = sin(glfwGetTime()) * radius, z = cos(glfwGetTime()) * radius.<br>
+
+### 4. IMAGES
 
 1. Ambient
 ![Image of Ambient](image/1.Ambient.png)

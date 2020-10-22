@@ -166,7 +166,7 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
 //=======================================Uniform=========================================
-        //1.model
+        //1.model, set as identity matrix
         GLint modelUniformLocation = glGetUniformLocation(lightingShader.Program, "model");
         glm::mat4 M1 = glm::mat4
         (glm::vec4(1.0,0.0,0.0,0.0),
@@ -175,12 +175,12 @@ int main()
          glm::vec4(0.0,0.0,0.0,1.0));
         glUniformMatrix4fv(modelUniformLocation,1,GL_FALSE,&M1[0][0]);
         
-        //2.view
+        //2.view matrix
         GLint viewUniformLocation = glGetUniformLocation(lightingShader.Program, "view");
         glm::mat4 M2 = camera.GetViewMatrix();
         glUniformMatrix4fv(viewUniformLocation,1,GL_FALSE,&M2[0][0]);
 
-        //3.projection
+        //3.projection attribute, using perspective(fovy,aspect,near,far)
         GLint projectUniformLocation = glGetUniformLocation(lightingShader.Program, "projection");
         glm::mat4 M3 = glm::perspective(100.0f, 1.5f, 3.0f, 150.0f);
         glUniformMatrix4fv(projectUniformLocation,1,GL_FALSE,&M3[0][0]);
@@ -193,11 +193,11 @@ int main()
         GLint viewPosUniformLocation = glGetUniformLocation(lightingShader.Program, "viewPos");
         glUniform3f(viewPosUniformLocation, 0.2f,0.2f,-1.0f);
         
-        //6.lightColor
+        //6.Color of light
         GLint lightColorUniformLocation = glGetUniformLocation(lightingShader.Program, "lightColor");
         glUniform3f(lightColorUniformLocation, 1.0f,1.0f,1.0f);
         
-        //7.objectColor
+        //7.Color of the cube
         GLint objectColorUniformLocation = glGetUniformLocation(lightingShader.Program, "objectColor");
         glUniform3f(objectColorUniformLocation, 0.6f,0.9f,0.8f);
         // Use cooresponding shader when setting uniforms/drawing objects

@@ -85,6 +85,8 @@ glm::vec3(0.0, 0.0, 0.0), <br>
 glm::vec3(0.0, 1.0, 0.0));  <br> 
 where x = sin(glfwGetTime()) * radius, z = cos(glfwGetTime()) * radius.<br>
 
+Use the time to change the x and z coordinate to make the cube rotate automatically.<br>
+
 ### 4. IMAGES
 
 1. Ambient

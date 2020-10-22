@@ -84,5 +84,20 @@ glm::lookAt<br>
          glm::vec3(0.0, 0.0, 0.0),<br>
          glm::vec3(0.0, 1.0, 0.0));<br>
          
-         
+### IMAGES
+
+1. Ambient
 ![Image of Ambient](image/1.Ambient.png)
+
+2. Diffuse
+![Image of Diffuse](image/2.Diffuse.png)
+
+3. Specular
+![Image of Specular](image/3.Specular.png)
+
+4.Phong Model
+![Image of Phong](image/4.Phong.png)
+
+
+
+

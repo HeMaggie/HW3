@@ -105,6 +105,7 @@ Use the time to change the x and z coordinate to make the cube rotate automatica
 
 ![Image of Phong](image/4.Phong.png)
 
-
-
+### 5. Reference
+(https://www.youtube.com/watch?v=KdDdljGtfeg&t=139s)
+https://learnopengl.com/Getting-started/Shaders
 
